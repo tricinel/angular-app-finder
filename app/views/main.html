@@ -1,9 +1,15 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+  <h1>Search for an app by its ID</h1>
+  <p>Enter the app id below:</p>
+  <form class="form-inline" ng-submit="search()">
+    <input type="text" ng-model="appId" class="input-large">
+    <input type="submit" class="btn btn-primary" value="Search">
+  </form>
+</div>
+
+<div class="container">
+  <div ng-show="alert" class="alert alert-{{alert.type}}">{{alert.message}}</div>
+  <div ng-show="app" class="main">
+    <h2>{{app.trackName}}</h2>
+  </div>
 </div>

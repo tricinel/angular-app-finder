@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('angularIosAppsApp', [])
+angular.module('angularIosAppsApp', ['ngResource'])
   .config ($routeProvider) ->
     $routeProvider
       .when '/',
