@@ -1,6 +1,9 @@
 <div class="hero-unit">
   <h1>Search for an app by its ID</h1>
-  <p>Enter the app id below:</p>
+  <p>
+    Enter the app id below:
+    <br/><small>eg.: 346201546</small>
+  </p>
   <form class="form-inline" ng-submit="search()">
     <input type="text" ng-model="appId" class="input-large">
     <input type="submit" class="btn btn-primary" value="Search">
@@ -10,6 +13,32 @@
 <div class="container">
   <div ng-show="alert" class="alert alert-{{alert.type}}">{{alert.message}}</div>
   <div ng-show="app" class="main">
-    <h2>{{app.trackName}}</h2>
+    <div class="app-info">
+      <div class="artwork">
+        <img ng-src="{{app.artworkUrl512}}" alt="{{app.trackName}} icon" width="125" height="125">
+        <span class="mask"></span>
+      </div>
+      <a href="{{app.trackViewUrl}}" class="btn btn-small btn-info">{{app.formattedPrice}}</a>
+      <p class="meta well">
+        Category: {{app.primaryGenreName}}
+        <br/>
+        Version: {{app.version}}
+      </p>
+    </div>
+    <div class="app-details">
+      <h2>{{app.trackName}}</h2>
+      <p class="author">by <a href="{{app.sellerUrl}}" title="{{app.trackName}} Support">{{app.artistName}}</a></p>
+      <div class="screenshots">
+        <tabs>
+          <pane ng-repeat="pane in app.imagesPanes" heading="{{pane.title}}" active="pane.active">
+            <ul class="unstyled">
+              <li ng-repeat="screenshot in pane.screenshots | limitTo: 3">
+                <img ng-src="{{screenshot}}" alt="screenshot" class="img-{{pane.title | lowercase}}">
+              </li>
+            </ul>
+          </pane>
+        </tabs>
+      </div>
+    </div>
   </div>
 </div>

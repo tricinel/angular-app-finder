@@ -1,1 +1,73 @@
 @import "compass_twitter_bootstrap";
+
+small {
+  color: $gray;
+  font-size: 11px;
+}
+
+.main {
+  @extend .clearfix;
+  margin: 20px 0px 20px 0px;
+}
+
+.app-info {
+  float: left;
+  max-width: 130px;
+  text-align: center;
+  width: 20%;
+
+  .artwork {
+    margin: 0px 0px 20px 5px;
+    position: relative;
+    width: 123px;
+
+    img {
+      position: relative;
+      width: 125px;
+      z-index: 0;
+    }
+
+    .mask {
+      background: url(../images/mask-125.png) 0 0 no-repeat;
+      display: block;
+      height: 126px;
+      left: -1px;
+      position: absolute;
+      top: 0;
+      width: 125px;
+      z-index: 1;
+    }
+  }
+
+  .meta {
+    color: $grayLight;
+    font-size: 12px;
+    margin-top: 30px;
+    padding: 10px;
+  }
+}
+
+.app-details {
+  float: right;
+  width: 80%;
+}
+
+.screenshots {
+
+  img {
+    float: left;
+    margin: 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.img-iphone {
+      max-width: 150px;
+    }
+
+    &.img-ipad {
+      max-width: 200px;
+    }
+  }
+}
