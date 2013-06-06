@@ -5,6 +5,15 @@ small {
   font-size: 11px;
 }
 
+#search {
+  @extend .well;
+  margin: 20px 0px 20px 0px;
+
+  form {
+    margin: 0;
+  }
+}
+
 .main {
   @extend .clearfix;
   margin: 20px 0px 20px 0px;

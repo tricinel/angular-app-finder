@@ -1,11 +1,7 @@
-<div class="hero-unit">
-  <h1>Search for an app by its ID</h1>
-  <p>
-    Enter the app id below:
-    <br/><small>eg.: 346201546</small>
-  </p>
+<div id="search">
   <form class="form-inline" ng-submit="search()">
-    <input type="text" ng-model="appId" class="input-large">
+    <label for="search">Search for an app by its ID:</label>
+    <input type="text" name="search" ng-model="appId" class="span8" placeholder="Enter the app ID, eg. 346201546">
     <input type="submit" class="btn btn-primary" value="Search">
   </form>
 </div>
