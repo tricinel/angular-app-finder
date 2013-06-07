@@ -1,11 +1,12 @@
 'use strict'
 
 angular.module('angularIosAppsApp')
-  .controller 'MainCtrl', ['$scope', 'itunes', ($scope, itunes) ->
+  .controller 'MainCtrl', ['$scope', 'itunes', 'storage', ($scope, itunes, storage) ->
 
     $scope.search = () ->
       $scope.alert = false
       $scope.app = false
+      # storage.delete()
       keys = [
         'artworkUrl512'
         'trackName'
@@ -18,6 +19,12 @@ angular.module('angularIosAppsApp')
         'screenshotUrls'
         'ipadScreenshotUrls'
       ]
+
+      getSavedSearches = () ->
+        $scope.savedSearches = storage.get()
+        return
+
+      getSavedSearches()
 
       itunes.get {id:$scope.appId}, (res) ->
         if res.resultCount
@@ -38,9 +45,15 @@ angular.module('angularIosAppsApp')
 
           $scope.app.imagesPanes[0].active = true
 
+          #save to $cookies
+          storage.put $scope.appId, $scope.app.trackName
+
         else
           $scope.alert =
             type: 'error'
             message: 'App doesn\'t exist'
+
+        $scope.appId = ''
+        getSavedSearches()
 
   ]
