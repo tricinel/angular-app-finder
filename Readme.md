@@ -1,6 +1,6 @@
 A simple Angular app to search the App Store by app id and retrieve specific app information.
 
-** Built with Yeoman, AngularJS, Coffeescript, SASS and the iTunes Search API **
+** Built with Yeoman, AngularJS, AngularUI, Coffeescript, SASS and the iTunes Search API **
 
 # Installation
 
