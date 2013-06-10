@@ -38,3 +38,8 @@ Enter an app ID and the form will return a nice layout with the following inform
 
 - [The iTunes Search API](http://www.apple.com/itunes/affiliates/resources/blog/introduction---search-api.html)
 - [iTunes Search API Examples](http://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html#searchexamples)
+
+# TODO
+
+- more polished design
+- add a simple non-moving carousel for app screenshots
