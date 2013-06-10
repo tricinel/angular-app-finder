@@ -1,16 +1,83 @@
 @import "compass_twitter_bootstrap";
 
+@mixin gradient-reset() {
+  background-color: transparent;
+  background-image: none;
+  filter: none;
+}
+
 small {
   color: $gray;
   font-size: 11px;
 }
 
 #search {
-  @extend .well;
-  margin: 20px 0px 20px 0px;
+  background-color: #323a45;
+  border: 1px solid darken(#323a45, 7%);
+  border-top: 0;
+  color: #f1f1f3;
+  margin: 0px 0px 20px 0px;
+  padding: 15px;
 
   form {
     margin: 0;
+    text-align: center;
+
+    input[type="text"] {
+      width: 50%;
+    }
+  }
+
+  .previous-searches {
+    display: inline-block;
+    margin-left: 15px;
+
+    > a {
+      color: $white;
+      cursor: pointer;
+      vertical-align: middle;
+      &:hover {
+        color: $grayLight;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: #323a45;
+      border: none;
+      left: auto;
+      right: -110px;
+      top: 36px;
+      width: 220px;
+
+      li:first-child {
+        border-bottom: 1px dashed lighten(#323a45,10%);
+        color: $grayLight;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+
+      li:last-child {
+       border-top: 1px dashed lighten(#323a45,10%);
+       color: $grayLight;
+       margin-top: 10px;
+       padding-top: 10px;
+
+       a {
+        background-color: transparent;
+        &:hover {
+          color: $white;
+        }
+       }
+      }
+
+      a {
+        color: $grayLighter;
+        &:hover {
+          @include gradient-reset;
+          background-color: lighten(#323a45,7%);
+        }
+      }
+    }
   }
 }
 

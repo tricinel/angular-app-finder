@@ -1,42 +1,57 @@
 <div id="search">
   <form class="form-inline" ng-submit="search()">
     <label for="search">Search for an app by its ID:</label>
-    <input type="text" name="search" ng-model="appId" class="span8" placeholder="Enter the app ID, eg. 346201546">
-    <input type="submit" class="btn btn-primary" value="Search">
+    <input type="text" name="search" ng-model="appId" placeholder="Enter the app ID, eg. 346201546">
+    <input type="submit" class="btn" value="Search">
+    <div class="previous-searches dropdown" ng-show="savedSearches">
+      <a class="dropdown-toggle"><i class="icon-align-justify icon-white"></i></a>
+      <ul class="dropdown-menu">
+        <li>You've already searched for:</li>
+        <li ng-repeat="app in savedSearches">
+          <a href="javascript:void(0)" ng-click="search(app.id)">{{app.name}}</a>
+        </li>
+        <li><a href="javascript:void(0)" ng-click="clearSearch()"><i class="icon-remove-circle icon-white"></i> Clear all</a></li>
+      </ul>
+    </div>
   </form>
 </div>
 
-{{savedSearches}}
+<div class="container-fluid">
 
-<div class="container">
-  <div ng-show="alert" class="alert alert-{{alert.type}}">{{alert.message}}</div>
-  <div ng-show="app" class="main">
-    <div class="app-info">
-      <div class="artwork">
-        <img ng-src="{{app.artworkUrl512}}" alt="{{app.trackName}} icon" width="125" height="125">
-        <span class="mask"></span>
+  <alert ng-repeat="alert in alerts" type="alert.type">{{alert.msg}}</alert>
+
+  <div class="row-fluid" ng-show="app">
+
+    <div class="span12">
+      <div class="app-info">
+        <div class="artwork">
+          <img ng-src="{{app.artworkUrl512}}" alt="{{app.trackName}} icon" width="125" height="125">
+          <span class="mask"></span>
+        </div>
+        <a ng-href="{{app.trackViewUrl}}" class="btn btn-small btn-info">{{app.formattedPrice}}</a>
+        <p class="meta well">
+          Category: {{app.primaryGenreName}}
+          <br/>
+          Version: {{app.version}}
+        </p>
       </div>
-      <a href="{{app.trackViewUrl}}" class="btn btn-small btn-info">{{app.formattedPrice}}</a>
-      <p class="meta well">
-        Category: {{app.primaryGenreName}}
-        <br/>
-        Version: {{app.version}}
-      </p>
-    </div>
-    <div class="app-details">
-      <h2>{{app.trackName}}</h2>
-      <p class="author">by <a href="{{app.sellerUrl}}" title="{{app.trackName}} Support">{{app.artistName}}</a></p>
-      <div class="screenshots">
-        <tabs>
-          <pane ng-repeat="pane in app.imagesPanes" heading="{{pane.title}}" active="pane.active">
-            <ul class="unstyled">
-              <li ng-repeat="screenshot in pane.screenshots | limitTo: 3">
-                <img ng-src="{{screenshot}}" alt="screenshot" class="img-{{pane.title | lowercase}}">
-              </li>
-            </ul>
-          </pane>
-        </tabs>
+      <div class="app-details">
+        <h2>{{app.trackName}}</h2>
+        <p class="author">by <a ng-href="{{app.sellerUrl}}" title="{{app.trackName}} Support">{{app.artistName}}</a></p>
+        <div class="screenshots">
+          <tabs>
+            <pane ng-repeat="pane in app.imagesPanes" heading="{{pane.title}}" active="pane.active">
+              <ul class="unstyled">
+                <li ng-repeat="screenshot in pane.screenshots | limitTo: 3">
+                  <img ng-src="{{screenshot}}" alt="screenshot" class="img-{{pane.title | lowercase}}">
+                </li>
+              </ul>
+            </pane>
+          </tabs>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!--/span-->
+
+  </div><!--/row-->
+
+</div><!--/.fluid-container-->
