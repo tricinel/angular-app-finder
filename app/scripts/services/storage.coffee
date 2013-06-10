@@ -7,8 +7,7 @@ angular.module('angularIosAppsApp')
 
     exists = (id,searches) ->
       result = false
-      for app in searches
-        result = true for key,value of app when key is id
+      result = true for app in searches when app.id is id
       return result
 
 
@@ -18,10 +17,10 @@ angular.module('angularIosAppsApp')
         return $cookieStore.get(cookie) || []
 
       put: (id,name) ->
-        newSearch = {}
-        newSearch[id] = name
+        newSearch =
+          id: id
+          name: name
         searches = this.get()
-        console.log exists(id,searches)
         if not exists(id,searches)
           searches.push newSearch
           $cookieStore.put cookie, searches

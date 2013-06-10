@@ -3,31 +3,49 @@
 angular.module('angularIosAppsApp')
   .controller 'MainCtrl', ['$scope', 'itunes', 'storage', ($scope, itunes, storage) ->
 
-    $scope.search = () ->
-      $scope.alert = false
-      $scope.app = false
-      # storage.delete()
-      keys = [
-        'artworkUrl512'
-        'trackName'
-        'trackViewUrl'
-        'formattedPrice'
-        'primaryGenreName'
-        'version'
-        'artistName'
-        'sellerUrl'
-        'screenshotUrls'
-        'ipadScreenshotUrls'
-      ]
+    $scope.app = false
+    keys = [
+      'artworkUrl512'
+      'trackName'
+      'trackViewUrl'
+      'formattedPrice'
+      'primaryGenreName'
+      'version'
+      'artistName'
+      'sellerUrl'
+      'screenshotUrls'
+      'ipadScreenshotUrls'
+    ]
 
-      getSavedSearches = () ->
-        $scope.savedSearches = storage.get()
-        return
+    getSavedSearches = () ->
+      $scope.savedSearches = storage.get()
+      return
 
+    addAlert = (type, msg) ->
+      $scope.alerts = $scope.alerts || []
+      $scope.alerts.push
+        type: type
+        msg: msg
+      return
+
+    clearAlerts = () ->
+      $scope.alerts = null
+
+    getSavedSearches()
+
+    $scope.clearSearch = () ->
+      storage.delete()
       getSavedSearches()
+      return
 
-      itunes.get {id:$scope.appId}, (res) ->
+    $scope.search = (id) ->
+      appId = id || $scope.appId
+
+      itunes.get {id:appId}, (res) ->
         if res.resultCount
+          #remove any existing alerts
+          clearAlerts()
+          #set up the app
           $scope.app = {}
           $scope.app[key] = value for key, value of res.results[0] when key in keys
           #set up the tab panes and images
@@ -46,12 +64,10 @@ angular.module('angularIosAppsApp')
           $scope.app.imagesPanes[0].active = true
 
           #save to $cookies
-          storage.put $scope.appId, $scope.app.trackName
+          storage.put appId, $scope.app.trackName
 
         else
-          $scope.alert =
-            type: 'error'
-            message: 'App doesn\'t exist'
+          addAlert 'error', 'App doesn\'t exist'
 
         $scope.appId = ''
         getSavedSearches()
