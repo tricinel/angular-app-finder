@@ -1,7 +1,7 @@
 'use strict'
 
 describe 'Directive: orientation', () ->
-  beforeEach module 'angularIosAppsApp'
+  beforeEach module 'ngAppFinder'
 
   element = {}
 

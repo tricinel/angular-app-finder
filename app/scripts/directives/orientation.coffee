@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularIosAppsApp')
+angular.module('ngAppFinder')
   .directive('orientation', () ->
     restrict: 'A'
     link: (scope, element, attrs) ->

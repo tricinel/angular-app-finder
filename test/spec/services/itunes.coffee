@@ -3,7 +3,7 @@
 describe 'Service: itunes', () ->
 
   # load the service's module
-  beforeEach module 'angularIosAppsApp'
+  beforeEach module 'ngAppFinder'
 
   # instantiate service
   itunes = {}

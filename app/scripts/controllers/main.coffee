@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('angularIosAppsApp')
+angular.module('ngAppFinder')
   .controller 'MainCtrl', ['$scope', 'itunes', 'storage', ($scope, itunes, storage) ->
 
     $scope.app = false

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularIosAppsApp')
+angular.module('ngAppFinder')
   .factory 'storage', ($cookieStore) ->
 
     cookie = 'savedSearches'

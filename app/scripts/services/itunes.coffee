@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularIosAppsApp')
+angular.module('ngAppFinder')
   .factory 'itunes', ['$resource', ($resource) ->
 
     return $resource 'https://itunes.apple.com/:action',
