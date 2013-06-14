@@ -8,6 +8,7 @@ angular.module('angularIosAppsApp')
       'artworkUrl512'
       'trackName'
       'trackViewUrl'
+      'trackId'
       'formattedPrice'
       'primaryGenreName'
       'version'
@@ -15,6 +16,7 @@ angular.module('angularIosAppsApp')
       'sellerUrl'
       'screenshotUrls'
       'ipadScreenshotUrls'
+      'averageUserRating'
     ]
 
     getSavedSearches = () ->

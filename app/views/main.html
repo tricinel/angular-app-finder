@@ -38,6 +38,10 @@
       <div class="app-details">
         <h2>{{app.trackName}}</h2>
         <p class="author">by <a ng-href="{{app.sellerUrl}}" title="{{app.trackName}} Support">{{app.artistName}}</a></p>
+        <p class="meta">
+          Rated
+          <rating value="app.averageUserRating" max="5" readonly="true"></rating>
+        </p>
         <div class="screenshots">
           <tabs>
             <pane ng-repeat="pane in app.imagesPanes" heading="{{pane.title}}" active="pane.active">
