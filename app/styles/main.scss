@@ -138,12 +138,19 @@ small {
       margin-left: 0;
     }
 
-    &.img-iphone {
-      max-width: 150px;
+    &.img-portrait {
+      max-width: 200px;
+
+      &.img-ipad {
+        max-width: 300px;
+      }
     }
 
-    &.img-ipad {
-      max-width: 200px;
+    &.img-landscape {
+      max-height: 200px;
+      &.img-ipad {
+        max-width: 500px;
+      }
     }
   }
 }

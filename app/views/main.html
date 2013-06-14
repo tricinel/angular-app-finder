@@ -47,7 +47,7 @@
             <pane ng-repeat="pane in app.imagesPanes" heading="{{pane.title}}" active="pane.active">
               <ul class="unstyled">
                 <li ng-repeat="screenshot in pane.screenshots | limitTo: 3">
-                  <img ng-src="{{screenshot}}" alt="screenshot" class="img-{{pane.title | lowercase}}">
+                  <img ng-src="{{screenshot}}" alt="screenshot" class="img-{{pane.title | lowercase}}" orientation>
                 </li>
               </ul>
             </pane>
