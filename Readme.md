@@ -6,19 +6,27 @@ A simple Angular app to search the App Store by app id and retrieve specific app
 
 If you haven't already:
 
-  npm install -g yo grunt-cli bower
+```shell
+npm install -g yo grunt-cli bower
+```
 
 If you want to enhance the app, you'll need the yeoman angular generator:
 
-  npm install generator-angular
+```shell
+npm install generator-angular
+```
 
 You will need node and npm to do this.
 
 # Running the app
 
-  git clone git://github.com/tricinel/angular-ios-apps.git
-  $ cd angular-ios-apps
-  $ grunt server
+```shell
+git clone git://github.com/tricinel/angular-app-finder.git
+cd angular-app-finder
+npm install
+bower install
+grunt server
+```
 
 # Features
 
@@ -32,7 +40,9 @@ Enter an app ID and the form will return a nice layout with the following inform
 - applicaiton App Store web link
 - application version number
 - application company name
+- application company link
 - application category
+- application average user rating
 
 # Resources
 
@@ -42,4 +52,4 @@ Enter an app ID and the form will return a nice layout with the following inform
 # TODO
 
 - more polished design
-- add a simple non-moving carousel for app screenshots
+- responsive design
